@@ -14,9 +14,9 @@ ADD ./demo_site.conf /etc/apache2/sites-available/000-default.conf
 ######### Install Elastic file system ############
 RUN apt-get install nfs-common -y
 # EFS_URL - URL of the elastic file system
-RUN sudo mkdir /efs
+RUN mkdir /efs
 
-CMD sudo apt-get update -y && \
+CMD apt-get update -y && \
 mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 ${EFS_URL}:/ efs && \
 mount --bind --verbose /efs/debian/jenkins_home/workspace/django /var/www/html
 ##################################################
