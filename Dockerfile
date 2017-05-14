@@ -12,7 +12,7 @@ ADD ./demo_site.conf /etc/apache2/sites-available/000-default.conf
 #COPY www/* /var/www/html/
 
 ######### Install Elastic file system ############
-RUN sudo apt-get install nfs-common -y
+RUN apt-get install nfs-common -y
 # EFS_URL - URL of the elastic file system
 RUN sudo mkdir /efs
 
