@@ -18,8 +18,8 @@ RUN mkdir /efs
 
 CMD apt-get update -y && \
 mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 ${EFS_URL}:/ efs && \
-mount --bind --verbose /efs/debian/jenkins_home/workspace/django /var/www/html
+mount --bind --verbose /efs/debian/jenkins_home/workspace/django /var/www/html && \
+apache2ctl -DFOREGROUND
 ##################################################
 
 EXPOSE 80 3500
-CMD ["apache2ctl", "-D", "FOREGROUND"]
